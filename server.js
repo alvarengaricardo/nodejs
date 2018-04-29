@@ -17,7 +17,7 @@ var mongoose = require('mongoose');
 var Produto = require('./app/model/produto');
 
 //URI: mlab
-mongoose.connect('mongodb://<ricardo>:<camboja>@ds014118.mlab.com:14118/node-crud-api');
+mongoose.connect('mongodb://usuario:camboja@ds014118.mlab.com:14118/node-crud-api');
 
 //banco local: MongoDb
 //mongoose.connect('mongodb://localhost/node-crud-api');
@@ -29,13 +29,31 @@ app.use(bodyParser.json());
 // Definindo a porta onde será executada a api:
 var port = process.env.port || 8000;
 
+// Rotas da API
+// ==========================
+
+
+
 // Criando uma instãncia das Rotas via Express:
 var router = express.Router();
 
+router.use(function(req, res, next){
+    console.log('Acesso rota.');
+    next();
+});
+
 // Rota de exemplo:
 router.get('/', function(req, res){
-    res.json({message: 'Funcionando OK! KKK = 3xPotássio'})
+    res.json({message: 'Funcionando ok.'})
 });
+
+
+//API´s
+//===============================================
+
+
+
+
 
 // Definindo um padrão das rotas prefixadas: '/api'
 app.use('/api', router);
