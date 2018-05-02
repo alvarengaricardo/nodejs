@@ -3,7 +3,7 @@
 *Arquivo: server.js
 *Descrição:
 *Autor:
-*Data: 28/04/2018
+*Data: 01/05/2018
 *
 */
 
@@ -19,9 +19,6 @@ var Produto = require('./app/models/produto');
 //URI: mlab
 mongoose.connect('mongodb://usuario:camboja@ds014118.mlab.com:14118/node-crud-api');
 
-//banco local: MongoDb
-//mongoose.connect('mongodb://localhost/node-crud-api');
-
 // Configuração da variável app para usar o 'bodyParser()':
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -31,10 +28,6 @@ var port = process.env.port || 8000;
 
 // Rotas da API
 // ==========================
-
-
-
-
 
 // Criando uma instãncia das Rotas via Express:
 var router = express.Router();
@@ -48,8 +41,6 @@ router.use(function(req, res, next){
 router.get('/', function(req, res){
     res.json({message: 'Funcionando ok.'})
 });
-
-
 
 //API's:
 //==============================================================================
@@ -135,7 +126,6 @@ router.route('/produtos')
                     res.json({ message: 'Produto Excluído com Sucesso!' });
                 });
             });
-
 
 //Definindo um padrão das rotas prefixadas: '/api':
 app.use('/api', router);
